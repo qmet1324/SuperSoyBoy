@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 50000011978039246}
   - component: {fileID: 58000010521450930}
   - component: {fileID: 82000010722992820}
+  - component: {fileID: 6526612700699696500}
+  - component: {fileID: 7824040683591799889}
   m_Layer: 0
   m_Name: buzzsaw
   m_TagString: Untagged
@@ -218,3 +220,32 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &6526612700699696500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011707204276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bd931c8ea215d443b92d365640d7353, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerDeathPrefab: {fileID: 4182965025354392445, guid: 722bcd14fb9fbbf4a9348b661ea102ec,
+    type: 3}
+  deathClip: {fileID: 8300000, guid: 20d68b3df7b8bf047a3ed6c5e47ae6c5, type: 3}
+  hitSprite: {fileID: 21300000, guid: e34df7d72fac13944bc0e0fe2b92e9cd, type: 3}
+--- !u!114 &7824040683591799889
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1000011707204276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf23ec9ba335ba04885199349c87b079, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationsPerMinute: 640

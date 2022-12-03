@@ -11,6 +11,11 @@ public class SoyBoyController : MonoBehaviour
     private Rigidbody2D rb;
     private Animator animator;
 
+    public AudioClip runClip;
+    public AudioClip jumpClip;
+    public AudioClip slideClip;
+    private AudioSource audioSource;
+
     private float rayCastLengthCheck = 0.005f;
     private float width;
     private float height;
@@ -26,6 +31,8 @@ public class SoyBoyController : MonoBehaviour
 
     void Awake()
     {
+        audioSource = GetComponent<AudioSource>();
+
         sr = GetComponent<SpriteRenderer>();
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody2D>();
@@ -68,7 +75,13 @@ public class SoyBoyController : MonoBehaviour
             {
                 isJumping = true;
             }
+
             animator.SetBool("IsOnWall", false);
+
+            if (input.x < 0f || input.x > 0f)
+            {
+                PlayAudioClip(runClip);
+            }
         }
 
         if (jumpDuration > jumpDurationThreshold)
@@ -117,6 +130,7 @@ public class SoyBoyController : MonoBehaviour
             * 0.75f, rb.velocity.y);
             animator.SetBool("IsOnWall", false);
             animator.SetBool("IsJumping", true);
+            PlayAudioClip(jumpClip);
         }
         else if (!IsWallToLeftOrRight())
         {
@@ -126,6 +140,7 @@ public class SoyBoyController : MonoBehaviour
         if (IsWallToLeftOrRight() && !PlayerIsOnGround())
         {
             animator.SetBool("IsOnWall", true);
+            PlayAudioClip(slideClip);
         }
 
         if (isJumping && jumpDuration < jumpDurationThreshold)
@@ -207,6 +222,15 @@ public class SoyBoyController : MonoBehaviour
         else
         {
             return 0;
+        }
+    }
+
+    void PlayAudioClip(AudioClip clip)
+    {
+        if (audioSource != null && clip != null)
+        {
+            if (!audioSource.isPlaying) 
+                audioSource.PlayOneShot(clip);
         }
     }
 }
